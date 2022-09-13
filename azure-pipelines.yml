@@ -27,5 +27,13 @@ steps:
     command: 'login'
     addPipelineData: false
     addBaseImageData: false
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub_login'
+    repository: 'dockernaveensddp/azuredocker'
+    command: 'buildAndPush'
+    Dockerfile: '**/AzureDockerfile'
+    addPipelineData: false
+    addBaseImageData: false
 
 
