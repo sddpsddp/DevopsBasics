@@ -22,14 +22,14 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 - task: Docker@2
---name: Docker_Login
+  displayName: Docker_Login
   inputs:
     containerRegistry: 'dockerhub_login'
     command: 'login'
     addPipelineData: false
     addBaseImageData: false
 - task: Docker@2
---name: Docker_Build_Push
+  displayName: Docker_Build_Push_'$(Build.BuildNumber)'
   inputs:
     containerRegistry: 'dockerhub_login'
     repository: 'dockernaveensddp/azuredocker'
