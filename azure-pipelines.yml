@@ -55,6 +55,6 @@ steps:
     awsCredentials: 'AWS_CREDENTIALS'
     regionName: 'us-east-1'
     imageSource: 'imagename'
-    repositoryName: '240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:'$(Build.BuildNumber)'
+    repositoryName: "240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:'$(Build.BuildNumber)'"
 
 -
