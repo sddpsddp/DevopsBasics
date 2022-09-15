@@ -48,10 +48,7 @@ steps:
       docker tag dockernaveensddp/azuredocker:'$(Build.BuildNumber)' 240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:latest
       echo "Tagging Completed"
 
-- task: AzureWebAppContainer@1
-  azureSubscription: 'Free Trial(f6d6363e-7586-4d2e-a1ba-44c368d411fa)'
-    appName: 'docker-app-jabil'
-    containers: 'dockernaveensddp/azuredocker:120'
+
 
 - task: ECRPushImage@1
   inputs:
