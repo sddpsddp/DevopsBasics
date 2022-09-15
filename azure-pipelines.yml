@@ -37,17 +37,6 @@ steps:
     Dockerfile: '**/AzureDockerfile'
     addPipelineData: false
     addBaseImageData: false
-- task: Bash@3
-  displayName: Tagging_Image_for_Build_'$(Build.BuildNumber)'
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      echo 'Tagging Images'
-      docker tag dockernaveensddp/azuredocker:'$(Build.BuildNumber)' 240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:latest
-      echo "Tagging Completed"
-
 
 
 - task: ECRPushImage@1
@@ -55,4 +44,5 @@ steps:
     awsCredentials: 'AWS_CREDENTIALS'
     regionName: 'us-east-1'
     imageSource: 'imagename'
+    sourceImageName: dockernaveensddp/azuredocker:'$(Build.BuildNumber)'
     repositoryName: 240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:'$(Build.BuildNumber)'
