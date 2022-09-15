@@ -49,7 +49,7 @@ steps:
       echo "Tagging Completed"
 
 - task: AzureWebAppContainer@1
-    azureSubscription: 'Free Trial(f6d6363e-7586-4d2e-a1ba-44c368d411fa)'
+  azureSubscription: 'Free Trial(f6d6363e-7586-4d2e-a1ba-44c368d411fa)'
     appName: 'docker-app-jabil'
     containers: 'dockernaveensddp/azuredocker:120'
 
