@@ -46,5 +46,5 @@ steps:
     regionName: 'us-east-1'
     imageSource: 'imagename'
     sourceImageName: 'dockernaveensddp/azuredocker'
-    sourceImageTag: '$(Build.BuildNumber)'
+    sourceImageTag: '$(Build.BuildId)'
     repositoryName: '240635294677.dkr.ecr.us-east-1.amazonaws.com/automation'
