@@ -28,7 +28,7 @@ steps:
     command: 'login'
     addPipelineData: false
     addBaseImageData: false
-- task: Docker@2
+ - task: Docker@2
   displayName: Docker_Build_Push_'$(Build.BuildNumber)'
   inputs:
     containerRegistry: 'dockerhub_login'
@@ -37,16 +37,26 @@ steps:
     Dockerfile: '**/AzureDockerfile'
     addPipelineData: false
     addBaseImageData: false
-- task: AzureWebAppContainer@1
+- task: Bash@3
   inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      echo 'Tagging Images'
+      docker tag dockernaveensddp/azuredocker:'$(Build.BuildNumber)' 240635294677.dkr.ecr.us-east-1.amazonaws.com/automation:latest
+      echo "Tagging Completed"
+
+- task: AzureWebAppContainer@1
     azureSubscription: 'Free Trial(f6d6363e-7586-4d2e-a1ba-44c368d411fa)'
     appName: 'docker-app-jabil'
     containers: 'dockernaveensddp/azuredocker:120'
-
+    
 - task: ECRPushImage@1
   inputs:
     awsCredentials: 'AWS_CREDENTIALS'
     regionName: 'us-east-1'
     imageSource: 'imagename'
-    sourceImageName: 'azuredocker:139'
-    repositoryName: 'automation'
+    repositoryName: '240635294677.dkr.ecr.us-east-1.amazonaws.com/automation'
+
+-
