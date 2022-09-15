@@ -43,13 +43,10 @@ steps:
     appName: 'docker-app-jabil'
     containers: 'dockernaveensddp/azuredocker:120'
 
-- script:  |
-    aws ecr get-login-password --region '$(AWS_REGION)' | docker login --username AWS --password-stdin '$(AWS_ACCOUNT_ID)'.dkr.ecr.'$(AWS_REGION)'.amazonaws.com
-  displayName: 'Login to AWS ECR'
 - task: ECRPushImage@1
   inputs:
-   awsCredentials: '$(AWS_CREDS)'
-    regionName: '$(AWS_REGION)'
+    awsCredentials: 'AWS_CREDENTIALS'
+    regionName: 'us-east-1'
     imageSource: 'imagename'
-    sourceImageName: 'automation'
+    sourceImageName: 'azuredocker'
     repositoryName: 'automation'
