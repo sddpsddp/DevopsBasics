@@ -7,11 +7,6 @@ trigger:
 - develop
 - master
 
-variables:
-- AWS_ACCESS_KEY_ID: "AKIATQBX3GPKR7KYWFLF"
-- AWS_SECRET_ACCESS_KEY: "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"
-
-
 pool:
   vmImage: ubuntu-latest
 
@@ -48,10 +43,13 @@ steps:
     appName: 'docker-app-jabil'
     containers: 'dockernaveensddp/azuredocker:120'
 
-
+steps:
+- script:  |
+    aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
+  displayName: 'Login to AWS ECR'
 - task: ECRPushImage@1
   inputs:
-    regionName: 'us-east-1'
+    regionName: $(AWS_REGION)
     imageSource: 'imagename'
-    sourceImageName: 'devops-basics'
-    repositoryName: '240635294677.dkr.ecr.us-east-1.amazonaws.com/automation'
+    sourceImageName: 'automation'
+    repositoryName: 'automation'
