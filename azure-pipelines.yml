@@ -28,7 +28,6 @@ steps:
     command: 'login'
     addPipelineData: false
     addBaseImageData: false
-
 - task: Docker@2
   displayName: Docker_Build_Push_'$(Build.BuildNumber)'
   inputs:
