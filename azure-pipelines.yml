@@ -48,5 +48,5 @@ steps:
     awsCredentials: 'AWS_CREDENTIALS'
     regionName: 'us-east-1'
     imageSource: 'imagename'
-    sourceImageName: 'azuredocker'
+    sourceImageName: 'azuredocker:139'
     repositoryName: 'automation'
