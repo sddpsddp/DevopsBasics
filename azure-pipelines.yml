@@ -49,3 +49,9 @@ steps:
     containers: 'dockernaveensddp/azuredocker:120'
 
 
+- task: ECRPushImage@1
+  inputs:
+    regionName: 'us-east-1'
+    imageSource: 'imagename'
+    sourceImageName: 'devops-basics'
+    repositoryName: '240635294677.dkr.ecr.us-east-1.amazonaws.com/automation'
